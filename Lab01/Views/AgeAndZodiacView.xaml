@@ -1,0 +1,50 @@
+﻿<UserControl x:Class="Lab01.Views.AgeAndZodiacView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             mc:Ignorable="d"
+             d:DesignHeight="300" d:DesignWidth="300">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+        </Grid.RowDefinitions>
+        <DatePicker Margin="10" Width="185" Height="190" 
+                    VerticalAlignment="Top" Grid.Row="0" 
+                    SelectedDate="{Binding Path=UserBirthDate, Mode=TwoWay}">
+        </DatePicker>
+        <Button Grid.Row="1"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Center"
+                Height="30"
+                Margin="5"
+                Content="Compute age and zodiac"
+                Command ="{Binding ShowDateInfoCommand}"
+        ></Button>
+        <TextBlock Grid.Row="2"
+                   VerticalAlignment="Bottom"
+                   HorizontalAlignment="Center"
+                   Height="30"
+                   Margin="5"
+                   Text="{Binding UserAge}"
+        ></TextBlock>
+        <TextBlock Grid.Row="3"
+                   VerticalAlignment="Bottom"
+                   HorizontalAlignment="Center"
+                   Height="30"
+                   Margin="5"
+                   Text="{Binding UserWesternZodiac}"
+        ></TextBlock>
+        <TextBlock Grid.Row="4"
+                   VerticalAlignment="Bottom"
+                   HorizontalAlignment="Center"
+                   Height="30"
+                   Margin="5"
+                   Text="{Binding UserChineseZodiac}"
+        ></TextBlock>
+    </Grid>
+</UserControl>
