@@ -24,7 +24,7 @@ namespace Lab01.Models
                                                              "Yang Fire", "Yin Fire", "Yang Earth", "Yin Earth", 
                                                              "Yang Metal", "Yin Metal"};
         // the first year all dates of which work correctly in ChineseLunisolarCalendar
-        private static readonly int _anchorYear = 1902;
+        private static readonly int AnchorYear = 1902;
         private static readonly ChineseLunisolarCalendar ChineseCalendar = new ChineseLunisolarCalendar();
         private DateTime _birthDate;
         private string _westernZodiac;
@@ -78,12 +78,12 @@ namespace Lab01.Models
         private string DetermineChineseZodiac()
         {
             var zodiac = new StringBuilder();
-            var year = _birthDate.Year < _anchorYear ? _birthDate.Year : ChineseCalendar.GetYear(_birthDate);
-            var elementIndex = (year - _anchorYear) % 10;
+            var year = _birthDate.Year < AnchorYear ? _birthDate.Year : ChineseCalendar.GetYear(_birthDate);
+            var elementIndex = (year - AnchorYear) % 10;
             if (elementIndex < 0) elementIndex += 10;
             zodiac.Append(ChineseElements[elementIndex]);
             zodiac.Append(" ");
-            var zodiacIndex = (year - _anchorYear) % 12;
+            var zodiacIndex = (year - AnchorYear) % 12;
             if (zodiacIndex < 0) zodiacIndex += 12;
             zodiac.Append(ChineseZodiacs[zodiacIndex]);
             return zodiac.ToString();
