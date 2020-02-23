@@ -4,7 +4,6 @@ using System.Text;
 
 namespace Lab01.Models
 {
-    //#nullable enable
     internal class User
     {
         #region Fields
