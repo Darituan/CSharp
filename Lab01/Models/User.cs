@@ -27,8 +27,7 @@ namespace Lab01.Models
         private static readonly int AnchorYear = 1902;
         private static readonly ChineseLunisolarCalendar ChineseCalendar = new ChineseLunisolarCalendar();
         private DateTime _birthDate;
-        private string _westernZodiac;
-        private string _chineseZodiac;
+
         #endregion
 
         #region Properties
@@ -39,13 +38,14 @@ namespace Lab01.Models
             {
                 _birthDate = value;
                 CheckAge();
-                ChangeDependentFields();
+                ChangeDependentProperties();
             }
         }
 
-        public string WesternZodiac => _westernZodiac;
+        public string WesternZodiac { get; private set; }
 
-        public string ChineseZodiac => _chineseZodiac;
+        public string ChineseZodiac { get; private set; }
+
         #endregion
 
         public int AgeInYears()
@@ -89,17 +89,17 @@ namespace Lab01.Models
             return zodiac.ToString();
         }
 
-        private void ChangeDependentFields()
+        private void ChangeDependentProperties()
         {
-            _westernZodiac = DetermineWesternZodiac();
-            _chineseZodiac = DetermineChineseZodiac();
+            WesternZodiac = DetermineWesternZodiac();
+            ChineseZodiac = DetermineChineseZodiac();
         }
 
         private void CheckAge()
         {
             var age = AgeInYears();
             if (age >= 0 && age <= 135) return;
-            var message = String.Concat("It seems like You were either born more", 
+            var message = string.Concat("It seems like You were either born more", 
                 " than 135 years ago or in future.", " If this is not a mistake, we are sorry to tell", 
                 " this app is probably not designed for You :(");
             Console.WriteLine(message);
@@ -110,7 +110,7 @@ namespace Lab01.Models
         {
             if (birthDate.HasValue)
                 BirthDate = birthDate.Value;
-            else throw new ArgumentException("Argument should have a value");
+            else throw new ArgumentException("Birth date should be selected first");
         }
     }
 }

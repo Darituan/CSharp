@@ -6,8 +6,8 @@ namespace Lab01.Tools
     public class RelayCommand<T> : ICommand
     {
         #region Fields
-        readonly Action<T> _execute;
-        readonly Predicate<T> _canExecute;
+        private readonly Action<T> _execute;
+        private readonly Predicate<T> _canExecute;
         #endregion
 
         #region Constructors
@@ -53,8 +53,8 @@ namespace Lab01.Tools
         ///</summary>
         public event EventHandler CanExecuteChanged
         {
-            add { CommandManager.RequerySuggested += value; }
-            remove { CommandManager.RequerySuggested -= value; }
+            add => CommandManager.RequerySuggested += value;
+            remove => CommandManager.RequerySuggested -= value;
         }
 
         ///<summary>

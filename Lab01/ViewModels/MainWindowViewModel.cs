@@ -14,7 +14,7 @@ namespace Lab01.ViewModels
         #region Properties
         public Visibility LoaderVisibility
         {
-            get { return _loaderVisibility; }
+            get => _loaderVisibility;
             set
             {
                 _loaderVisibility = value;
@@ -23,7 +23,7 @@ namespace Lab01.ViewModels
         }
         public bool IsControlEnabled
         {
-            get { return _isControlEnabled; }
+            get => _isControlEnabled;
             set
             {
                 _isControlEnabled = value;
